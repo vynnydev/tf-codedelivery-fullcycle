@@ -16,6 +16,13 @@ func init() {
 	}
 }
 
+func initb() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("error loading .env file")
+	}
+}
+
 func main() {
 	msgChan := make(chan *ckafka.Message)
 	consumer := kafka.NewKafkaConsumer(msgChan)
