@@ -27,10 +27,10 @@ export class RoutesGateway implements OnModuleInit {
   @SubscribeMessage('new-direction')
   handleMessage(client: Socket, payload: { routeId: string }) {
     this.kafkaProducer.send({
-      topic: 'route-new-direction',
+      topic: 'route.new-direction',
       messages: [
         {
-          key: 'route-new-direction',
+          key: 'route.new-direction',
           value: JSON.stringify({
             routeId: payload.routeId,
             clientId: client.id,
